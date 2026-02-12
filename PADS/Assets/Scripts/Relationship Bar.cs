@@ -20,7 +20,7 @@ public class RelationshipBar : MonoBehaviour
         if (currentValue != targetValue)
         {
             currentValue = targetValue;
-            barImage.fillAmount = currentValue / 15;
+            barImage.rectTransform.sizeDelta = new Vector2(currentValue * 325 / 15 + 75, 65);
         }
     }
 

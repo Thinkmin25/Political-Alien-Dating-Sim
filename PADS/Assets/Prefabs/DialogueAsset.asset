@@ -1,0 +1,463 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c0a41a76e4c9642b2625a5caf429ab, type: 3}
+  m_Name: DialogueAsset
+  m_EditorClassIdentifier: 
+  leftCharacter:
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - 
+  - 
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - Captain
+  - 
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - Captain
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  leftExpression: 00000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  rightCharacter:
+  - 
+  - Commander
+  - Commander
+  - Commander
+  - Commander
+  - Commander
+  - Commander
+  - Commander
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - General Goumyster
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - Politicia
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  rightExpression: 00000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  isLeftSpeaking: 00000100010001000001000000010001000101000101000100010100010001000100010001010001010001000001000100010100010100000100010000000000000000000000000000000000000000000000
+  endDialogue: 00000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000
+  dialogueEnter:
+  - 
+  - Test MC Blorika
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Intro
+  - 
+  - 
+  - 
+  - 1A
+  - 1B
+  - 
+  - 1C
+  - M1
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 2A
+  - 
+  - 
+  - 
+  - 2B
+  - 
+  - 
+  - 
+  - 
+  - 2C
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 2C-a
+  - 
+  - 2C-b
+  - 
+  - M2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 3A
+  - 
+  - 
+  - 3B
+  - 
+  - 3C
+  - M3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  dialogueText:
+  - 
+  - Captain, the ship is ready to launch. Direct trip programmed to Planet Zorbob
+    for your meeting with President Blorika.
+  - Copy that Commander, hopefully she's in a better mood then she was at our last
+    meeting
+  - Unlikely sir, the high temperature readings suggest an excessive amount of slime
+    secretion for the Zorbobians
+  - "*sigh* lets get this over with. Commander, what's the president's file say,
+    if she\u2019s gonna be pissy might as well woo her with something, lighten the
+    mood, ya know?"
+  - The president's Spacebook profile suggests she enjoys long walks on the beach,
+    and the sound of people chewing with their mouths open.
+  - "I guess I'll have to take what I can get\u2026"
+  - 'As you dock at the Space Station orbiting Blorfengarl, the ship opens up to
+    a large docking bay. To greet you is a grumpy wad of goo, a spiffy looking tie
+    around his neck. '
+  - "Ah! Captain... You look so\u2026 intelligent. It\u2019s a pleasure to finally
+    be meeting you!"
+  - "Pleasure\u2019s all mine General!"
+  - Your trip here was alright?
+  - Good to hear!
+  - HA! Apologies Captain, we meant no harm! We're due on a new Fnozzle for the artificial
+    gravity core!
+  - "It\u2019s no trouble, just make sure it\u2019s better for next time HAHA!!"
+  - Hmm, well we have some Bleeding Grapes back at the Space Station you can have
+    some of those.
+  - The general turns away, a wet slurping sounds as he moves.
+  - Walk with me Captain. The president is waiting in her office.
+  - "By the time you make it to the President's Office, you\u2019re tugging at your
+    collar, the heat making your shirt stick to your skin. When you open the door
+    to the president's office, she is far from what you expected."
+  - "She\u2019s a tall green skinned woman with big bug eyes, and dressed much too
+    scandalously for a politician."
+  - Oh wow! You're earlier than I was anticipating! You must be the captain!
+  - She holds out her hand for you to shake.
+  - "It\u2019s a pleasure to officially meet you Miss President."
+  - "Oh please, I get enough formality from my glorbs\_ everyday, Politicia is fine."
+  - Well it's a pleasure to meet you Politicia!
+  - Likewise captain!
+  - Politicia's outstretched hand freezes before it returns to her side.
+  - "Sorry! You\u2019re just\u2026 uh\u2026 very tall."
+  - I get that a lot.
+  - "Well it\u2019s a pleasure to officially meet you Miss President"
+  - Just Politicia is fine.
+  - "Politicia's outstretched hand freezes before it returns to her side. Her lips
+    purse together as if she\u2019s not sure what to say."
+  - "uhh, yea\u2026 I won the election 3 terms in a row"
+  - "oh! No that\u2019s not what I meant! You're just like\u2026"
+  - like what? (lowkey annoyed)
+  - You're not gooey!
+  - What does that have to do with anything?! I thought you people were more open-minded
+    then that!
+  - Politicia is almost fuming. You tug at your collar uncomfortably before taking
+    a deep breath.
+  - "Clearly we\u2019ve gotten off on the wrong foot haha! All I meant if you look
+    different then the rest of your people."
+  - "Clearly we have\u2026"
+  - Politicia huffs and crosses her arms, obviously offended.
+  - uhh, sorry, didn't mean it that way (sweats)
+  - I suppose I can ignore this, considering you bring me an offering next time we
+    have a meeting.
+  - "An uncomfortable silence falls over the two of you. Of course the first time
+    you reach out to a new System and you've insulted their President within the
+    first minute\u2026"
+  - "So uhh\u2026"
+  - "Anyways, now that you're here I\u2019d like to discuss the implications of the
+    alliance proposal you sent over?"
+  - 'Absolutely. The Human Federation have been growing and expanding and as the
+    leader of the Raven Galaxy Exploratory Mission, I am looking to make some new
+    allies! '
+  - "Well, we are looking for some new strong allies, I\u2019m just not quite sure
+    we can trust the humans quite yet, no offense!"
+  - None taken!
+  - "Considering you\u2019ve only established yourselves as a galactic empire fairly
+    recently\u2026 I just am unsure of your human history."
+  - "That\u2019s a fair concern, but just as a completely unbiased opinion, this
+    Human is 100% trustworthy!"
+  - You and Politicia take some time going over the alliance proposal, discussing
+    details and other political mumbo jumbo, the usual kinds of conversations a politician
+    would have.
+  - Well, I have a lot to consider for our next meeting!
+  - You take her hand, flash a cunning smirk before kissing her spikey knuckles like
+    a proper gentlecaptain.
+  - I look forward to our next meeting Politicia
+  - "Oh my! Don\u2019t be a stranger, Captain!"
+  - "I agree, there\u2019s nothing wrong with wanting more allies."
+  - Until next time Politicia.
+  - Of course, safe travels.
+  - The End
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  dialogueExit:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - M1
+  - 
+  - M1
+  - M1
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - M2
+  - 
+  - 
+  - 
+  - 
+  - M2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - M2
+  - 
+  - M2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - M3
+  - 
+  - M3
+  - M3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
