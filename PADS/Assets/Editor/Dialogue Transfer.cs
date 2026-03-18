@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogueTransfer", menuName = "Scriptable Objects/DialogueTransfer")]
@@ -15,6 +16,8 @@ public class DialogueTransfer : ScriptableObject
         var excel = new ExcelImporter(excelFilePath);
         ImportText(excel);
         Debug.Log("Finished Importing!");
+
+        EditorUtility.SetDirty(asset);
     }
 
     

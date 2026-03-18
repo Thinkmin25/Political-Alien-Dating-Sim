@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text textComponent;
     public TMP_Text nameText;
     public GameObject characterPortait;
-    [SerializeField] static int dialogueIndex = 1;
+    public int dialogueIndex = 1;
     public float readingCharIndex = 0;
     public GameObject[] dialogueOptionButtons;
     [SerializeField] float textSpeed = 30f;
@@ -77,11 +77,11 @@ public class DialogueManager : MonoBehaviour
             if (readingCharIndex < textBase.Length)
             {
                 readingCharIndex += Time.deltaTime * textSpeed;
-                Debug.Log(textBase.Length);
+                //Debug.Log(textBase.Length);
                 if (readingCharIndex >= textBase.Length - 1)
                 {
                     readingCharIndex = textBase.Length;
-                    Debug.Log("Makin choices");
+                    //Debug.Log("Makin choices");
                     SetupDialogueChoices();
                 }
             }
@@ -95,6 +95,7 @@ public class DialogueManager : MonoBehaviour
 
     public void SetupDialogueChoices()
     {
+        //Debug.Log(asset.dialogueOption[dialogueIndex]); 
         if (asset.dialogueOption[dialogueIndex] == "")
         {
             nextTriangle.enabled = true;
@@ -105,7 +106,8 @@ public class DialogueManager : MonoBehaviour
             choiceCount = 0;
             for (int i = 0; i < 4; i++)
             {
-                Debug.Log(asset.dialogueOption[dialogueIndex + i * asset.rowCount]);
+                //Debug.Log(dialogueIndex + i * asset.rowCount);
+                //Debug.Log(asset.dialogueOption[dialogueIndex + i * asset.rowCount]);
                 if (asset.dialogueOption[dialogueIndex + i * asset.rowCount] != "")
                 {
                     choiceCount++;
@@ -121,13 +123,13 @@ public class DialogueManager : MonoBehaviour
                 dialogueOptionButtons[i].SetActive(true);
                 dialogueOptionButtons[i].GetComponentInChildren<TMP_Text>().text = asset.dialogueOption[dialogueIndex + i * asset.rowCount];
                 Vector3 tempPos = dialogueOptionButtons[i].GetComponent<RectTransform>().anchoredPosition;
-                Debug.Log(tempPos);
+                //Debug.Log(tempPos);
                 tempPos.x = -screenWidth / 8;
                 
                 tempPos.y = choiceCount * 75 + i * -150;
-                Debug.Log(tempPos);
+                //Debug.Log(tempPos);
                 dialogueOptionButtons[i].GetComponent<RectTransform>().anchoredPosition = tempPos;
-                Debug.Log(dialogueOptionButtons[i].GetComponent<RectTransform>().position);
+                //Debug.Log(dialogueOptionButtons[i].GetComponent<RectTransform>().position);
             }
         }
     }
@@ -137,7 +139,16 @@ public class DialogueManager : MonoBehaviour
         if (asset.variableChange[dialogueIndex + buttonOption * asset.rowCount] != "")
         {
             RelationshipManager.politiciaDict[asset.variableChange[dialogueIndex + buttonOption * asset.rowCount]] += ((int)asset.valueChange[dialogueIndex + buttonOption * asset.rowCount]);
-            
+        }
+        else if (asset.dialogueOption[dialogueIndex + buttonOption * asset.rowCount] == "Restart")
+        {
+            dialogueIndex = 0;
+            RelationshipManager.politiciaDict["relationValue"] = 5;
+        }
+        else if (asset.dialogueOption[dialogueIndex + buttonOption * asset.rowCount] == "Exit")
+        {
+            Application.Quit();
+            dialogueIndex = 0;
         }
         DialogueProgress(asset.exit[dialogueIndex + buttonOption * asset.rowCount]);
     }
@@ -151,12 +162,12 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(asset.dialogueExit[dialogueIndex]);
+            //Debug.Log(asset.dialogueExit[dialogueIndex]);
             if (asset.dialogueExit[dialogueIndex] != "")
             {
                 destination = asset.dialogueExit[dialogueIndex];
             }
-            Debug.Log(destination);
+            //Debug.Log(destination);
             if (destination != "")
             {
                 while (asset.dialogueEnter[dialogueIndex] != destination)
