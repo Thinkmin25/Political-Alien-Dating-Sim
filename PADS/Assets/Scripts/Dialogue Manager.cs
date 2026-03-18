@@ -1,20 +1,22 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
     public enum Expressions
     {
-        Sad,
-        Neutral,
-        Loving,
-        Horny,
-        Happy,
-        Embarrased,
-        Bored,
-        Astonished,
-        Angry
+        Sad = 0,
+        Neutral = 1,
+        Loving = 2,
+        Horny = 3,
+        Happy = 4,
+        Embarrased = 5,
+        Bored = 6,
+        Astonished = 7,
+        Angry = 8
     }
 
     public enum Conditionals
@@ -54,13 +56,20 @@ public class DialogueManager : MonoBehaviour
 
     int choiceCount = 4;
 
-    
+    public Dictionary <Expressions, Sprite> expressionDict = new Dictionary<Expressions, Sprite>();
+    public Sprite[] expressionSprites;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         textComponent = GetComponent<TMP_Text>();
         dialogueButton = GetComponent<Button>();
+
+        for (int i = 0; i < expressionSprites.Length; i++)
+        {
+            Expressions expIndex = (Expressions)i;
+            expressionDict.Add(expIndex, expressionSprites[i]);
+        }
 
         DialogueProgress("Intro");
     }
@@ -195,21 +204,36 @@ public class DialogueManager : MonoBehaviour
             }
             else nameText.text = asset.rightCharacter[dialogueIndex];
 
-            Color tempColor = Color.white;
+            Sprite exp = expressionDict[Expressions.Neutral]; ;
             switch (asset.rightExpression[dialogueIndex])
             {
-                case Expressions.Neutral:
-                    tempColor = Color.white;
-                    break;
                 case Expressions.Sad:
-                    tempColor = Color.blue;
+                    exp = expressionDict[Expressions.Sad];
+                    break;
+                case Expressions.Loving:
+                    exp = expressionDict[Expressions.Loving];
+                    break;
+                case Expressions.Horny:
+                    exp = expressionDict[Expressions.Horny];
+                    break;
+                case Expressions.Happy:
+                    exp = expressionDict[Expressions.Happy];
+                    break;
+                case Expressions.Embarrased:
+                    exp = expressionDict[Expressions.Embarrased];
+                    break;
+                case Expressions.Bored:
+                    exp = expressionDict[Expressions.Bored];
+                    break;
+                case Expressions.Astonished:
+                    exp = expressionDict[Expressions.Astonished];
                     break;
                 case Expressions.Angry:
-                    tempColor = Color.red;
+                    exp = expressionDict[Expressions.Angry];
                     break;
             }
 
-            characterPortait.GetComponent<Image>().color = tempColor;
+            characterPortait.GetComponent<Image>().sprite = exp;
         }
     }
 
