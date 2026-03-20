@@ -304,6 +304,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 298805766}
+        m_TargetAssemblyTypeName: MenuTracker, Assembly-CSharp
+        m_MethodName: EnterScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &48672031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &165288813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1132,6 +1144,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270681937}
   m_CullTransparentMesh: 1
+--- !u!1 &298805765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298805768}
+  - component: {fileID: 298805767}
+  - component: {fileID: 298805766}
+  m_Layer: 0
+  m_Name: Telemetry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &298805766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298805765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e230f8b187c354e8612f4ba9175da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &298805767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298805765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286038c7bf69e8046b2933b67bf376bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Settings>k__BackingField: {fileID: 11400000, guid: 5d5d63052f85e9d4487a127ff3ddbc21, type: 2}
+  _section: Politicia Main
+  OnConnectionSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConnectionFail:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &298805768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298805765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 905.41345, y: 550.3735, z: -5.223532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496136677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &680018104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5724,6 +5801,12 @@ MonoBehaviour:
   dialogueButton: {fileID: 2066659766}
   nextTriangle: {fileID: 676722206}
   expressionSprites: []
+  dialogueInfoData:
+    text: 
+    dialogueIndex: 0
+    timeSpent: 0
+    skipTime: 0
+    relationShipValue: 0
 --- !u!1 &2126083713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5857,3 +5940,4 @@ SceneRoots:
   - {fileID: 975046141}
   - {fileID: 43575198}
   - {fileID: 551346672}
+  - {fileID: 298805768}

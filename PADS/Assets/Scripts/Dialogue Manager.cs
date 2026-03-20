@@ -59,6 +59,9 @@ public class DialogueManager : MonoBehaviour
     public Dictionary <Expressions, Sprite> expressionDict = new Dictionary<Expressions, Sprite>();
     public Sprite[] expressionSprites;
 
+    public DialogueInfoData dialogueInfoData;
+    float textTimer = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,6 +74,15 @@ public class DialogueManager : MonoBehaviour
             expressionDict.Add(expIndex, expressionSprites[i]);
         }
 
+        dialogueInfoData = new DialogueInfoData()
+        {
+            text = "",
+            dialogueIndex = 0,
+            timeSpent = 0,
+            skipTime = 0,
+            relationShipValue = 0
+        };
+
         DialogueProgress("Intro");
     }
 
@@ -80,6 +92,8 @@ public class DialogueManager : MonoBehaviour
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         //dialogueButton.enabled = textComponent.text.Length < textBase.Length;
+
+        textTimer += Time.deltaTime;
 
         if (textComponent.text.Length < textBase.Length)
         {
@@ -100,6 +114,16 @@ public class DialogueManager : MonoBehaviour
                 textComponent.text += textBase[textComponent.text.Length];
             }
         }
+    }
+
+    [System.Serializable]
+    public struct DialogueInfoData
+    {
+        public string text;
+        public int dialogueIndex;
+        public float timeSpent;
+        public float skipTime;
+        public int relationShipValue;
     }
 
     public void SetupDialogueChoices()
@@ -159,6 +183,9 @@ public class DialogueManager : MonoBehaviour
             Application.Quit();
             dialogueIndex = 0;
         }
+
+        TelemetryLogger.Log(this, "Dialogue Choice", asset.variableChange[dialogueIndex + buttonOption * asset.rowCount]);
+
         DialogueProgress(asset.exit[dialogueIndex + buttonOption * asset.rowCount]);
     }
 
@@ -167,10 +194,27 @@ public class DialogueManager : MonoBehaviour
         if (textComponent.text.Length < textBase.Length)
         {
             readingCharIndex = textBase.Length;
+            dialogueInfoData.skipTime = textTimer;
             SetupDialogueChoices();
         }
         else
         {
+            dialogueInfoData.text = textBase;
+            dialogueInfoData.dialogueIndex = dialogueIndex;
+            dialogueInfoData.timeSpent = textTimer;
+            dialogueInfoData.relationShipValue = RelationshipManager.politiciaDict["relationValue"];
+            TelemetryLogger.Log(this, "Dialogue Information", dialogueInfoData);
+
+            dialogueInfoData = new DialogueInfoData()
+            {
+                text = "",
+                dialogueIndex = 0,
+                timeSpent = 0,
+                skipTime = 0,
+                relationShipValue = RelationshipManager.politiciaDict["relationValue"]
+            };
+
+            textTimer = 0;
             //Debug.Log(asset.dialogueExit[dialogueIndex]);
             if (asset.dialogueExit[dialogueIndex] != "")
             {
