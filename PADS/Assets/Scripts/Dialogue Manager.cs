@@ -93,7 +93,6 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(expressionDict[Expressions.Sad]);
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         //dialogueButton.enabled = textComponent.text.Length < textBase.Length;
@@ -226,16 +225,19 @@ public class DialogueManager : MonoBehaviour
 
     public void DialogueProgress(string destination)
     {
+        Debug.Log("dialogue progress " + destination);
         if (textComponent.text.Length < textBase.Length)
         {
             readingCharIndex = textBase.Length;
             dialogueInfoData.skipTime = textTimer;
             SetupDialogueChoices();
         }
-        else if (asset.endDialogue[dialogueIndex])
+        else if (readingCharIndex >= textBase.Length && asset.endDialogue[dialogueIndex])
         {
+            readingCharIndex = 0;
             shipScreen.SetActive(true);
             dialogueScreen.SetActive(false);
+            Gamestate.gameProgressionIndex++;
         }
         else
         {
@@ -263,6 +265,12 @@ public class DialogueManager : MonoBehaviour
             //Debug.Log(destination);
             if (destination != "")
             {
+                if (destination == "Gamestate")
+                {
+                    destination = Gamestate.dialogueKey;
+                    Debug.Log(Gamestate.dialogueKey + " " + Gamestate.gameProgressionIndex);
+                    dialogueIndex = 0;
+                }
                 while (asset.dialogueEnter[dialogueIndex] != destination)
                 {
                     dialogueIndex++;
