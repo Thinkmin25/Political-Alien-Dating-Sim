@@ -11,9 +11,12 @@ public class CrewmateManager : MonoBehaviour
     public string[] crewmateDescriptions;
     public Sprite[] crewmatePortraitSprites;
     public Sprite[] crewmateIconSprites;
-    public int[] crewmateBody;
-    public int[] crewmateMind;
-    public int[] crewmateSoul;
+    public static int[] crewmateBody;
+    public static int[] crewmateMind;
+    public static int[] crewmateSoul;
+
+    public int crewOne;
+    public int crewTwo;
 
     int startingCrewmateCount = 3;
 
@@ -24,7 +27,7 @@ public class CrewmateManager : MonoBehaviour
 
     public Slider[] statBars;
     float[] startStats = new float[3];
-    float[] endStats = new float[3];
+    public static float[] endStats = new float[3];
     float timer = 0;
     float timerSpeed = 1;
 
@@ -59,9 +62,21 @@ public class CrewmateManager : MonoBehaviour
         startStats[1] = statBars[1].value;
         startStats[2] = statBars[2].value;
 
-        endStats[0] = crewmateBody[index];
-        endStats[1] = crewmateMind[index];
-        endStats[2] = crewmateSoul[index];
+        if (crewTwo != index)
+        {
+            endStats[0] += crewmateBody[index] - crewmateBody[crewOne];
+            endStats[1] += crewmateMind[index] - crewmateMind[crewOne];
+            endStats[2] += crewmateSoul[index] - crewmateSoul[crewOne];
+        }
+        else
+        {
+            endStats[0] -= crewmateBody[crewTwo];
+            endStats[1] -= crewmateMind[crewTwo];
+            endStats[2] -= crewmateSoul[crewTwo];
+        }
+
+        crewOne = crewTwo;
+        crewTwo = index;
     }
 
     public void CreateCrewmate(int index)

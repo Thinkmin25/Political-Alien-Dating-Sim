@@ -62,6 +62,9 @@ public class DialogueManager : MonoBehaviour
     public DialogueInfoData dialogueInfoData;
     float textTimer = 0;
 
+    public GameObject shipScreen;
+    public GameObject dialogueScreen;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,6 +75,7 @@ public class DialogueManager : MonoBehaviour
         {
             Expressions expIndex = (Expressions)i;
             expressionDict.Add(expIndex, expressionSprites[i]);
+            
         }
 
         dialogueInfoData = new DialogueInfoData()
@@ -89,6 +93,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(expressionDict[Expressions.Sad]);
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         //dialogueButton.enabled = textComponent.text.Length < textBase.Length;
@@ -163,6 +168,36 @@ public class DialogueManager : MonoBehaviour
                 //Debug.Log(tempPos);
                 dialogueOptionButtons[i].GetComponent<RectTransform>().anchoredPosition = tempPos;
                 //Debug.Log(dialogueOptionButtons[i].GetComponent<RectTransform>().position);
+
+                dialogueOptionButtons[i].GetComponent<Button>().interactable = true;
+                dialogueOptionButtons[i].GetComponent<Image>().color = Color.white;
+
+                if (asset.valueCheck[dialogueIndex + i * asset.rowCount] != "")
+                {
+                    switch (asset.valueCheck[dialogueIndex + i * asset.rowCount])
+                    {
+                        case ("Body"):
+                            if (CrewmateManager.endStats[0] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            {
+                                continue;
+                            }
+                            break;
+                        case ("Mind"):
+                            if (CrewmateManager.endStats[1] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            {
+                                continue;
+                            }
+                            break;
+                        case ("Soul"):
+                            if (CrewmateManager.endStats[2] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            {
+                                continue;
+                            }
+                            break;
+                    }
+                    dialogueOptionButtons[i].GetComponent<Button>().interactable = false;
+                    dialogueOptionButtons[i].GetComponent<Image>().color = Color.grey;
+                }
             }
         }
     }
@@ -196,6 +231,11 @@ public class DialogueManager : MonoBehaviour
             readingCharIndex = textBase.Length;
             dialogueInfoData.skipTime = textTimer;
             SetupDialogueChoices();
+        }
+        else if (asset.endDialogue[dialogueIndex])
+        {
+            shipScreen.SetActive(true);
+            dialogueScreen.SetActive(false);
         }
         else
         {
@@ -248,7 +288,9 @@ public class DialogueManager : MonoBehaviour
             }
             else nameText.text = asset.rightCharacter[dialogueIndex];
 
-            Sprite exp = expressionDict[Expressions.Neutral]; ;
+            Debug.Log(expressionDict[Expressions.Sad]);
+
+            Sprite exp = expressionDict[Expressions.Sad];
             switch (asset.rightExpression[dialogueIndex])
             {
                 case Expressions.Sad:
