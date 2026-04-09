@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -50,13 +49,18 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float textSpeed = 30f;
     public Button dialogueButton;
     public Image nextTriangle;
+    public Image nameBox;
+    public Sprite[] backgroundSprites;
+    public Image backgroundImage;
+    public Image backgroundTransition;
+    float transitionTimer = 1;
 
     float screenWidth = 1920;
     float screenHeight = 1080;
 
     int choiceCount = 4;
 
-    public Dictionary <Expressions, Sprite> expressionDict = new Dictionary<Expressions, Sprite>();
+    public Dictionary <Expressions, Sprite> expressionDict = new();
     public Sprite[] expressionSprites;
 
     public DialogueInfoData dialogueInfoData;
@@ -75,9 +79,10 @@ public class DialogueManager : MonoBehaviour
         {
             Expressions expIndex = (Expressions)i;
             expressionDict.Add(expIndex, expressionSprites[i]);
-            
+            Debug.Log((Expressions)i);
         }
-
+        Debug.Log(expressionDict[(Expressions)1]);
+        Debug.Log(expressionDict[Expressions.Happy]);
         dialogueInfoData = new DialogueInfoData()
         {
             text = "",
@@ -117,6 +122,12 @@ public class DialogueManager : MonoBehaviour
             {
                 textComponent.text += textBase[textComponent.text.Length];
             }
+        }
+
+        if (transitionTimer > 0)
+        {
+            transitionTimer -= Time.deltaTime;
+            backgroundTransition.color = new Color(1,1,1,transitionTimer);
         }
     }
 
@@ -173,22 +184,41 @@ public class DialogueManager : MonoBehaviour
 
                 if (asset.valueCheck[dialogueIndex + i * asset.rowCount] != "")
                 {
+                    int rollValue = Random.Range(1, 6);
                     switch (asset.valueCheck[dialogueIndex + i * asset.rowCount])
                     {
                         case ("Body"):
-                            if (CrewmateManager.endStats[0] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            if (CrewmateManager.endStats[0] + rollValue > asset.requirement[dialogueIndex + i * asset.rowCount])
                             {
                                 continue;
                             }
                             break;
                         case ("Mind"):
-                            if (CrewmateManager.endStats[1] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            if (CrewmateManager.endStats[1] + rollValue > asset.requirement[dialogueIndex + i * asset.rowCount])
                             {
                                 continue;
                             }
                             break;
                         case ("Soul"):
-                            if (CrewmateManager.endStats[2] < asset.requirement[dialogueIndex + i * asset.rowCount])
+                            if (CrewmateManager.endStats[2] + rollValue > asset.requirement[dialogueIndex + i * asset.rowCount])
+                            {
+                                continue;
+                            }
+                            break;
+                        case ("Speechcraft"):
+                            if (!(CrewmateManager.crewOneIndex == 2 || CrewmateManager.crewTwoIndex  == 2))
+                            {
+                                continue;
+                            }
+                            break;
+                        case ("Culture"):
+                            if (!(CrewmateManager.crewOneIndex == 1 || CrewmateManager.crewTwoIndex == 1))
+                            {
+                                continue;
+                            }
+                            break;
+                        case ("Manuverability"):
+                            if (!(CrewmateManager.crewOneIndex == 3 || CrewmateManager.crewTwoIndex == 3))
                             {
                                 continue;
                             }
@@ -293,12 +323,42 @@ public class DialogueManager : MonoBehaviour
             if (asset.isLeftSpeaking[dialogueIndex])
             {
                 nameText.text = asset.leftCharacter[dialogueIndex];
+                nameBox.enabled = (asset.leftCharacter[dialogueIndex] != "");
             }
-            else nameText.text = asset.rightCharacter[dialogueIndex];
+            else
+            {
+                nameText.text = asset.rightCharacter[dialogueIndex];
+                nameBox.enabled = (asset.rightCharacter[dialogueIndex] != "");
+            }
 
-            Debug.Log(expressionDict[Expressions.Sad]);
+            switch (dialogueIndex)
+            {
+                case 59:
+                    backgroundTransition.sprite = backgroundImage.sprite;
+                    backgroundImage.sprite = backgroundSprites[0];
+                    transitionTimer = 1;
+                    break;
+                case 72:
+                    backgroundTransition.sprite = backgroundImage.sprite;
+                    backgroundImage.sprite = backgroundSprites[1];
+                    transitionTimer = 1;
+                    break;
+                case 112:
+                    backgroundTransition.sprite = backgroundImage.sprite;
+                    backgroundImage.sprite = backgroundSprites[2];
+                    transitionTimer = 1;
+                    break;
+                case 151:
+                    backgroundTransition.sprite = backgroundImage.sprite;
+                    backgroundImage.sprite = backgroundSprites[3];
+                    transitionTimer = 1;
+                    break;
+            }
 
-            Sprite exp = expressionDict[Expressions.Sad];
+            characterPortait.SetActive(asset.rightCharacter[dialogueIndex] == "Politicia");
+            //Debug.Log(expressionDict[Expressions.Sad]);
+
+            Sprite exp;
             switch (asset.rightExpression[dialogueIndex])
             {
                 case Expressions.Sad:
@@ -325,9 +385,13 @@ public class DialogueManager : MonoBehaviour
                 case Expressions.Angry:
                     exp = expressionDict[Expressions.Angry];
                     break;
+                default:
+                    exp = expressionDict[Expressions.Neutral];
+                    break;
             }
 
             characterPortait.GetComponent<Image>().sprite = exp;
+
         }
     }
 

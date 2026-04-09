@@ -14,6 +14,11 @@ public class Gamestate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         switch (gameProgressionIndex)
         {
             case 0:
@@ -23,7 +28,7 @@ public class Gamestate : MonoBehaviour
                 dialogueKey = "Exercise";
                 break;
             case 2:
-                dialogueKey = "Intro";
+                dialogueKey = "Politicia";
                 break;
             case -1:
                 dialogueKey = "Wrong Exercise";
@@ -33,10 +38,15 @@ public class Gamestate : MonoBehaviour
 
     public void CheckCrew(CrewmateManager cmScript)
     {
-        var crew1 = cmScript.crewOne;
-        var crew2 = cmScript.crewTwo;
+        if (gameProgressionIndex > 1)
+        {
+            return;
+        }
 
-        if (crew1 != crew2 && (crew1 == 1 || crew1 == 2) && (crew2 == 1 || crew2 == 2))
+        var crew1 = CrewmateManager.crewOneIndex;
+        var crew2 = CrewmateManager.crewTwoIndex;
+
+        if (crew1 != crew2 && (crew1 == 2 || crew1 == 3) && (crew2 == 2 || crew2 == 3))
         {
             gameProgressionIndex = 1;
         }
